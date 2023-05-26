@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(IGPostTableViewCell.self, forCellReuseIdentifier: IGPostTableViewCell.Identifier)
+        tableView.register(IGPostTableViewCell.self, forCellReuseIdentifier: IGPostTableViewCell.identifier)
         return tableView
     }()
 
@@ -47,7 +47,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: IGPostTableViewCell.Identifier, for: indexPath) as! IGPostTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: IGPostTableViewCell.identifier, for: indexPath) as! IGPostTableViewCell
         return cell
     }
     func numberOfSections(in tableView: UITableView) -> Int {
