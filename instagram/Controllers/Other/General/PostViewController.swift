@@ -37,6 +37,25 @@ class PostViewController: UIViewController {
     init(model: UserPost?) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
+        configureModels()
+    }
+    
+    private func configureModels() {
+        guard let userPostModel = self.model else {
+            return
+        }
+        //header
+        renderModels.append(PostRenderViewModel(renderType: .header(provider: userPostModel.owner)))
+        //Post
+        renderModels.append(PostRenderViewModel(renderType: .primaryContent(provider: userPostModel)))
+        //Actions
+        renderModels.append(PostRenderViewModel(renderType: .actions(provider: "")))
+        //Commennts
+        var comments = [PostComment]()
+        for x in 0 ..< 4 {
+            comments.append(PostComment(identifier: "123_\(x)", userName: "@kanyewest", text: "Great post fella!", createdDate: Date(), likes: []))
+        }
+        renderModels.append(PostRenderViewModel(renderType: .comments(comments: comments)))
     }
     
     required init?(coder: NSCoder) {
@@ -102,7 +121,7 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         
-        return UITableViewCell()
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
