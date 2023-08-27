@@ -14,7 +14,7 @@ protocol FormTableViewCellDelegate: AnyObject {
 
 class FormTableViewCell: UITableViewCell, UITextFieldDelegate {
     
-    static let identifier = "FormTableViewCellIdentifier"
+    static let identifier = "FormTableViewCellIdentifierIdentifier"
     
     public weak var delegate: FormTableViewCellDelegate?
     
